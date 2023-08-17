@@ -9,3 +9,5 @@ RUN apt-get update && \
     apt-get install -y curl git ansible build-essential && \
     apt-get clean autoclean && \
     apt-get autoremove --yes
+
+COPY . .
