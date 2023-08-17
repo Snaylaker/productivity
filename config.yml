@@ -1,7 +1,12 @@
 - hosts: localhost
   become: true
-  tasks:
-    - name: Install ZSH
+  pre_tasks:
+    - name: Update Cache
       apt:
-        name: zsh
-        state: present
+        update_cache: true
+      tags:
+        - node
+        - zsh
+  tasks:
+    - include_tasks: tasks/node.yml
+    - include_tasks: tasks/zsh.yml
