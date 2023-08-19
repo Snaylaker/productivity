@@ -7,6 +7,8 @@
       tags:
         - node
         - zsh
+        - tmux
   tasks:
     - include_tasks: tasks/node.yml
     - include_tasks: tasks/zsh.yml
+    - include_tasks: tasks/tmux.yml

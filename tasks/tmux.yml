@@ -1,0 +1,6 @@
+- name: Install Tmux 
+  apt:
+    name: tmux 
+    state: present
+  tags:
+    - tmux 
