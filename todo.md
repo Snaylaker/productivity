@@ -10,3 +10,9 @@ Runs a docker image in interactive mode and enter the bin/bash repository
 
 `sudo docker run --name dev_container_test -it dev:latest /bin/bash` 
 
+You dont have to do crazy shenanigens just because i do them :
+
+```bash 
+sudo docker rm -f $(sudo docker ps -aq) && sudo docker run --name dev_container_test -it dev:latest /bin/bash
+```
+

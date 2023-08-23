@@ -1,3 +1,4 @@
+---
 - hosts: localhost
   become: true
   pre_tasks:
@@ -8,7 +9,19 @@
         - node
         - zsh
         - tmux
+
   tasks:
-    - include_tasks: tasks/node.yml
-    - include_tasks: tasks/zsh.yml
-    - include_tasks: tasks/tmux.yml
+    - name: Node tasks
+      include_tasks: tasks/node.yml
+      tags:
+        - node
+
+    - name: ZSH tasks
+      include_tasks: tasks/zsh.yml
+      tags:
+        - zsh
+
+    - name: TMUX tasks
+      include_tasks: tasks/tmux.yml
+      tags:
+        - tmux

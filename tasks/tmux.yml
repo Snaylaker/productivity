@@ -4,3 +4,12 @@
     state: present
   tags:
     - tmux 
+
+- name: Append bindkey configuration to ~/.zshrc
+  ansible.builtin.lineinfile:
+    path: ~/.zshrc
+    line: 'bindkey -s ^f "tmux-sessionizer\n"'
+    state: present
+  tags:
+    - tmux
+    - zsh
