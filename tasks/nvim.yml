@@ -1,29 +1,35 @@
----
-    - name: Install prerequisites
-      apt:
-        name:
-          - ninja-build
-          - gettext
-          - libtool
-          - libtool-bin
-          - autoconf
-          - automake
-          - cmake
-          - g++
-          - pkg-config
-          - unzip
-        state: present
+- name: Install prerequisites
+  apt:
+    name:
+      - ninja-build
+      - gettext
+      - libtool
+      - libtool-bin
+      - autoconf
+      - automake
+      - cmake
+      - g++
+      - pkg-config
+      - unzip
+    state: present
+  tags: 
+    - nvim
 
-    - name: Clone Neovim repository using Ansible git module
-      git:
-        repo: 'https://github.com/neovim/neovim.git'
-        dest: '/tmp/neovim'
-        depth: 1
+- name: Clone Neovim repository using Ansible git module
+  git:
+    repo: 'https://github.com/neovim/neovim.git'
+    dest: '/tmp/neovim'
+    depth: 1
+  tags: 
+    - nvim
 
-    - name: Build and install Neovim
-      command:
-        cmd: "{{ item }}"
-        chdir: /tmp/neovim
-      loop:
-        - make CMAKE_BUILD_TYPE=RelWithDebInfo
-        - make install
+- name: Build and install Neovim
+  command:
+    cmd: "{{ item }}"
+    chdir: /tmp/neovim
+  loop:
+    - make CMAKE_BUILD_TYPE=RelWithDebInfo
+    - make install
+  tags: 
+    - nvim
+
