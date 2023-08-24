@@ -10,7 +10,7 @@
         - zsh
         - tmux
         - nvim
-
+        - fzf
   tasks:
     - name: Node tasks
       include_tasks: tasks/node.yml
@@ -26,7 +26,13 @@
       include_tasks: tasks/tmux.yml
       tags:
         - tmux
+
     - name: nvim tasks
       include_tasks: tasks/nvim.yml
       tags:
         - nvim
+      
+    - name: fzf
+      include_tasks: tasks/fzf.yml
+      tags:
+        - fzf

@@ -1,0 +1,6 @@
+- name: Installing fzf
+  apt:
+    name: fzf 
+    state: present
+  tags:
+    - fzf 
