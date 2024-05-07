@@ -1,13 +1,11 @@
-FROM ubuntu:focal AS base
-WORKDIR /usr/local/bin
-ENV DEBIAN_FRONTEND=noninteractive
-RUN apt-get update && \
-    apt-get upgrade -y && \
-    apt-get install -y software-properties-common curl git build-essential && \
-    apt-add-repository -y ppa:ansible/ansible && \
-    apt-get update && \
-    apt-get install -y curl git ansible build-essential && \
-    apt-get clean autoclean && \
-    apt-get autoremove --yes
+FROM sickcodes/docker-osx:sonoma AS base
 
+# Install Homebrew
+RUN /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+# Install required dependencies using Homebrew
+RUN /bin/bash -c "$(brew install ansible)"
+# Set working directory
+WORKDIR /usr/local/bin
+
+# Copy your files (assuming they are in the same directory as Dockerfile)
 COPY . .
