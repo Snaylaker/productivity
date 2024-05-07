@@ -15,7 +15,6 @@ You dont have to do crazy shenanigens just because i do them :
 ```bash 
 sudo docker rm -f $(sudo docker ps -aq) && sudo docker run --name dev_container_test -it dev:latest /bin/bash
 ```
-In the next episode of DBZ 
 - [ ] i will install neovim
 - [ ] then maybe add stew for dot files 
 - [ ] add a task thats asks to decrypt my ssh key 
