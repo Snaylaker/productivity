@@ -1,9 +1,6 @@
-- name: Installing fzf
-  hosts: localhost
-  tasks:
-    - name: Install fzf
-      package:
-        name: fzf
-        state: present
-      tags:
-        - fzf
+- name: Install fzf
+  package:
+    name: fzf
+    state: present
+  tags:
+    - fzf

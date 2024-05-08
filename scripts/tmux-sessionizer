@@ -22,7 +22,7 @@ if tmux has-session -t=$selected_name 2> /dev/null; then
     fi
 else
     # If the session does not exist, create it
-    tmux new-session -ds $selected_name -c $selected
+    tmux new-session -s $selected_name -c $selected
 fi
 
 # The following will only execute if we are already inside a tmux session

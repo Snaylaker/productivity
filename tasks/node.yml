@@ -1,22 +1,18 @@
 - name: Install nodejs and npm
-  hosts: localhost
-  tasks:
-    - name: Install nodejs and npm
-      package:
-        name: "{{ item }}"
-        state: present
-      loop:
-        - nodejs
-        - npm
-      tags:
-        - node
+  package:
+    name: "{{ item }}"
+    state: present
+  loop:
+    - nodejs
+    - npm
+  ignore_errors : true
+  tags:
+    - node
 
 - name: Install n globally
-  hosts: localhost
-  tasks:
-    - name: Install n globally
-      package:
-        name: n
-        state: present
-      tags:
-        - node
+  ignore_errors : true
+  package:
+    name: n
+    state: present
+  tags:
+    - node
