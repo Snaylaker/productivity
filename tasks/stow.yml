@@ -1,21 +1,7 @@
 - name: Manage symlinks using stow
   hosts: localhost
-  gather_facts: false
   tasks:
     - name: Install stow (if not already installed)
-      become: yes
       package:
         name: stow
         state: present
-      when: ansible_system == 'Darwin'
-
-    - name: Install stow (if not already installed)
-      become: yes
-      package:
-        name: stow
-        state: present
-      when: ansible_system == 'Linux'
-
-    - name: Create symlinks using stow
-      command: stow -t ~ -d /path/to/productivity .ssh .nvim
-      become: no

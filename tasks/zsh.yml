@@ -1,5 +1,5 @@
 - name: Install ZSH
-  apt:
+  package:
     name: zsh
     state: present
   tags:

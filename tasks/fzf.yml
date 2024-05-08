@@ -1,6 +1,9 @@
 - name: Installing fzf
-  apt:
-    name: fzf 
-    state: present
-  tags:
-    - fzf 
+  hosts: localhost
+  tasks:
+    - name: Install fzf
+      package:
+        name: fzf
+        state: present
+      tags:
+        - fzf
