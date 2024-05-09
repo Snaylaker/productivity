@@ -1,6 +1,5 @@
 ---
 - hosts: localhost
-  ignore_errors : true
   tasks:
     - name: Node tasks
       include_tasks: tasks/node.yml
@@ -31,3 +30,8 @@
       include_tasks: tasks/firefox.yml
       tags:
         - firefox 
+
+    - name: stow 
+      include_tasks: tasks/stow.yml
+      tags:
+        - stow 

@@ -1,7 +1,26 @@
-- name: Manage symlinks using stow
-  hosts: localhost
-  tasks:
-    - name: Install stow (if not already installed)
-      package:
-        name: stow
-        state: present
+- name: Install stow 
+  package:
+    name: stow
+    state: present  
+  tags: stow
+
+- name: Check if directory exists
+  stat:
+    path: "~/Personal/dotfiles/"
+  register: repo_status
+  tags: stow
+
+- name: Clone dotfiles project
+  git:
+    repo: "https://github.com/Snaylaker/dotfiles"  
+    dest: "{{ ansible_env.HOME }}/Personal/dotfiles"  
+    version: main 
+  become: true 
+  tags: stow
+
+- name: Run stow to manage configurations
+  shell: stow -t {{ ansible_env.HOME }}/ . 
+  become: true
+  args:
+    chdir: "{{ ansible_env.HOME }}/Personal/dotfiles"
+  tags: stow
