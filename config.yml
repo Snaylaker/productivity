@@ -26,3 +26,8 @@
       include_tasks: tasks/fzf.yml
       tags:
         - fzf
+
+    - name: firefox 
+      include_tasks: tasks/firefox.yml
+      tags:
+        - firefox 
