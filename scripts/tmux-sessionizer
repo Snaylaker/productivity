@@ -17,15 +17,22 @@ selected_name=$(basename "$selected" | tr . _)
 if tmux has-session -t=$selected_name 2> /dev/null; then
     # If the session exists and we are not inside a tmux session, attach to it
     if [[ -z $TMUX ]]; then
+        echo "Already inside a tmux session with name $selected_name"
         tmux attach-session -t $selected_name
         exit 0
     fi
 else
     # If the session does not exist, create it
-    tmux new-session -s $selected_name -c $selected
+    echo "Creating new tmux session with name $selected_name"
+    if [[ -z $TMUX ]]; then
+        tmux new-session -s $selected_name -c $selected
+    else
+        tmux new-session -d -s $selected_name -c $selected
+    fi
 fi
 
 # The following will only execute if we are already inside a tmux session
 if [[ -n $TMUX ]]; then
+    echo "switch to $selected_name"
     tmux switch-client -t $selected_name
 fi

@@ -27,6 +27,10 @@ install_ansible_linux() {
 # Function to clone the repository and run Ansible playbook
 clone_and_run_playbook() {
     echo "Cloning the repository..."
+    if [ ! -d "$HOME/Personal" ]; then
+        echo "Creating ~/Personal directory..."
+        mkdir -p "$HOME/Personal"
+    fi
     git clone https://github.com/Snaylaker/productivity
     cd productivity
     echo "Running Ansible playbook..."
@@ -50,6 +54,6 @@ else
 fi
 
 # Clone the repository and run Ansible playbook
-clone_and_run_playbook
+ clone_and_run_playbook
 
 echo "Script execution completed."

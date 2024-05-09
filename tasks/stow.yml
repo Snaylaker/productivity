@@ -4,6 +4,18 @@
     state: present  
   tags: stow
 
+- name: Set XDG_CONFIG_HOME
+  environment:
+    XDG_CONFIG_HOME: "{{ ansible_env.HOME }}/.config"
+  tags: stow
+
+- name: Create directory for config file
+  ansible.builtin.file:
+    path: "{{ ansible_env.HOME }}/.config/"
+    state: directory
+    mode: '0755'
+  tags: stow
+
 - name: Check if directory exists
   stat:
     path: "~/Personal/dotfiles/"
